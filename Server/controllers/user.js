@@ -1,29 +1,38 @@
 import { userRepository } from "../repositories/index.js"
-
-const login = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-        const user = await userRepository.login(req.body);
-
-        res.status(200).json({
-            message: "Login successfully",
-            data: user
-        })
-    } catch (exception) {
-        res.status(500).json({
-            message: "Login Fail",
-        })
-    }
+import HttpStatusCode from "../exceptions/HttpStatusCode.js";
 
 
+const updateUser = async () => {
 
 }
 
-const register = async (req, res) => {
-    res.send("<h1>Register Success fully</h1>");
+const changePassword = async () => {
+
+}
+
+const deleteUser = async () => {
+
+}
+
+const getAllUser = async (req, res) => {
+    try {
+        const getUser = await userRepository.getAllUsers();
+
+        res.status(HttpStatusCode.OK).json({
+            message: 'Get User Success fully',
+            data: getUser,
+        })
+
+    } catch (exception) {
+        res.status(HttpStatusCode.INTERNAL_SERVER_ERROR).json({
+            message: exception.toString()
+        })
+    }
 }
 
 export default {
-    login,
-    register
+    updateUser,
+    changePassword,
+    deleteUser, 
+    getAllUser,
 }

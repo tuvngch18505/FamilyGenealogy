@@ -6,11 +6,11 @@ const Post = new mongoose.model("Post", new mongoose.Schema({
     commentId: { type: Number, required: true },
     content: { type: Number, required: true },
     file: { type: Number, default: 0},
-    like: { type: mongoose.Types.Number, ref: "User" },
+    like: { type: mongoose.Schema.Types.Number, ref: "User" },
     disLike: { type: mongoose.Schema.Types.Number, ref: "User" },
 
 }, { 
-    timestamps
+    timestamps: true
 }))
 
 export default Post;

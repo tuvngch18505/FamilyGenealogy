@@ -1,10 +1,20 @@
+import { UserModel } from "../models/index.js"
 
-const login = async ({ email, password }) => {
-    console.log(`Login successfully with ${email} and ${password}`);
+const changePassword = async () => {
+    
 }
 
-const register = async () => {
+const deleteUser = async () => {
+    
+}
+
+const updateUser = async () => {
 
 }
 
-export default { login, register }
+const getAllUsers = async () => {
+    const getUser = await UserModel.find({}).exec();
+    return getUser;
+}
+
+export default { login, register, getAllUsers }
